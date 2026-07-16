@@ -11,7 +11,7 @@ name: Agentic AI Assistant CI/CD
 
 concurrency:
   group: agentic-ai-production
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 permissions:
   contents: read
