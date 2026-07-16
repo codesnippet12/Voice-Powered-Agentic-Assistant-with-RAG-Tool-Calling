@@ -20,3 +20,5 @@ pypdf==6.13.2
 
 sentence-transformers>=3.0.0
 faiss-cpu
+
+streamlit-mic-recorder==0.0.8
