@@ -31,3 +31,4 @@ torchaudio
 requests
 
 langsmith>=0.3.0
+gTTS==2.5.4
