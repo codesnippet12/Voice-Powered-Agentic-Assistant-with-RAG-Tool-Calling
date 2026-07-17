@@ -125,6 +125,7 @@ Supports:
 
 ---
 
+<<<<<<< HEAD
 ## 🏗️ System Architecture
 
 ```text
@@ -164,6 +165,56 @@ Supports:
 
 ---
 
+=======
+## 🏗️ High-Level Architecture
+
+```mermaid
+flowchart LR
+
+    subgraph Client Layer
+        U[👤 User]
+        S[🎨 Streamlit UI]
+    end
+
+    subgraph Agent Layer
+        A[🧠 LangGraph Agent]
+        M[(SQLite Memory)]
+    end
+
+    subgraph Intelligence Layer
+        G[⚡ Groq Llama 3.3]
+    end
+
+    subgraph Tool Layer
+        W[🌦️ OpenWeather API]
+        T[🌐 Tavily Search]
+    end
+
+    subgraph Knowledge Layer
+        P[📄 PDF Documents]
+        H[🤗 HuggingFace Embeddings]
+        F[(FAISS Vector DB)]
+    end
+
+    U --> S
+    S --> A
+
+    A <--> G
+
+    A --> W
+    A --> T
+
+    P --> H
+    H --> F
+
+    A <--> F
+
+    A <--> M
+
+    A --> S
+    S --> U
+```
+>>>>>>> b4be28786bbd97da0e710d66b6ca61bc7b2c3aa7
 # 🛠️ Tech Stack
 
 ## Frontend
@@ -336,6 +387,195 @@ Health Check
 
 ---
 
+<<<<<<< HEAD
+=======
+# 🧠 Challenges & Key Learnings
+
+Building this project involved solving several real-world engineering challenges beyond simply integrating an LLM.
+
+---
+
+## 1️⃣ Designing an Agentic Workflow with LangGraph
+
+### Challenge
+
+Traditional chatbot implementations follow a simple:
+
+```text
+User → LLM → Response
+```
+
+However, an intelligent assistant must dynamically decide:
+
+- When to answer directly
+- When to search the web
+- When to query uploaded documents
+- When to invoke external tools
+
+### Learning
+
+Implemented a graph-based workflow using LangGraph where the assistant:
+
+- Maintains state across interactions
+- Routes requests to appropriate tools
+- Supports multi-step reasoning
+- Creates a more production-ready agent architecture
+
+---
+
+## 2️⃣ Building Retrieval-Augmented Generation (RAG)
+
+### Challenge
+
+Large Language Models may hallucinate when answering domain-specific questions.
+
+### Learning
+
+Built a RAG pipeline using:
+
+- PyPDFLoader
+- Recursive Text Splitting
+- HuggingFace Embeddings
+- FAISS Vector Database
+
+This improved answer quality by grounding responses in user-provided documents.
+
+---
+
+## 3️⃣ Tool Calling & Function Routing
+
+### Challenge
+
+The assistant needed access to real-time information unavailable in the model's training data.
+
+### Learning
+
+Integrated external tools including:
+
+- Weather API
+- Tavily Web Search
+
+The assistant autonomously decides when tool usage is required and incorporates tool outputs into the final response.
+
+---
+
+## 4️⃣ Managing Conversation State
+
+### Challenge
+
+Maintaining context across multiple conversations while supporting chat switching.
+
+### Learning
+
+Implemented persistent conversation storage using:
+
+- LangGraph Checkpointing
+- SQLite Memory Storage
+
+This enabled:
+
+- Multi-session chat history
+- Context-aware conversations
+- Thread-based conversation management
+
+---
+
+## 5️⃣ Voice-Based Interaction
+
+### Challenge
+
+Creating a natural voice-first experience within a web application.
+
+### Learning
+
+Integrated:
+
+- Speech-to-Text processing
+- Microphone input support
+- Real-time transcription workflow
+
+This transformed the assistant from a text chatbot into an interactive voice-enabled AI system.
+
+---
+
+## 6️⃣ Dockerization & Cloud Deployment
+
+### Challenge
+
+Deploying AI applications is significantly different from running them locally.
+
+Issues encountered included:
+
+- Missing dependencies
+- Docker build failures
+- Environment variable management
+- Memory limitations
+- Cloud networking and security rules
+
+### Learning
+
+Gained practical experience with:
+
+- Docker Containers
+- AWS EC2 Deployment
+- GitHub Actions CI/CD
+- Cloud Networking
+- Linux-based deployments
+
+---
+
+## 7️⃣ Debugging Real-World AI Systems
+
+### Challenge
+
+AI applications often fail due to dependency conflicts, API integrations, memory constraints, and deployment environment differences.
+
+### Learning
+
+Developed experience in:
+
+- Reading production logs
+- Troubleshooting containerized applications
+- Dependency management
+- Performance optimization
+- End-to-end system debugging
+
+---
+
+# 📚 Overall Takeaways
+
+This project provided hands-on experience across multiple domains:
+
+### Artificial Intelligence
+
+- Agentic AI Systems
+- RAG Architectures
+- Tool Calling
+- Prompt Engineering
+
+### Backend Engineering
+
+- API Integration
+- State Management
+- Data Persistence
+
+### Cloud & DevOps
+
+- Docker
+- AWS
+- CI/CD Pipelines
+- Deployment Automation
+
+### Software Engineering
+
+- System Design
+- Debugging
+- Scalability Considerations
+- Production Readiness
+
+The project evolved from a simple chatbot into a full-fledged AI assistant capable of reasoning, retrieval, tool usage, and voice interaction, closely resembling modern production AI systems.
+
+>>>>>>> b4be28786bbd97da0e710d66b6ca61bc7b2c3aa7
 # 📈 Future Improvements
 
 - Multi-Agent Collaboration
@@ -386,4 +626,8 @@ Passionate about:
 - Distributed Systems
 - Cloud & DevOps
 
+<<<<<<< HEAD
 ⭐ If you found this project useful, consider giving it a star.
+=======
+⭐ If you found this project useful, consider giving it a star.
+>>>>>>> b4be28786bbd97da0e710d66b6ca61bc7b2c3aa7
