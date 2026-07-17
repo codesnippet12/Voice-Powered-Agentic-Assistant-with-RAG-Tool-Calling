@@ -125,47 +125,53 @@ Supports:
 
 ---
 
-## 🏗️ System Architecture
+## 🏗️ High-Level Architecture
 
 ```mermaid
-flowchart TD
+flowchart LR
 
-    User([👤 User])
+    subgraph Client Layer
+        U[👤 User]
+        S[🎨 Streamlit UI]
+    end
 
-    User --> UI[🎨 Streamlit Frontend]
+    subgraph Agent Layer
+        A[🧠 LangGraph Agent]
+        M[(SQLite Memory)]
+    end
 
-    UI --> Voice[🎤 Voice Input]
-    UI --> Chat[💬 Text Query]
+    subgraph Intelligence Layer
+        G[⚡ Groq Llama 3.3]
+    end
 
-    Voice --> STT[Speech-to-Text]
-    STT --> Agent
+    subgraph Tool Layer
+        W[🌦️ OpenWeather API]
+        T[🌐 Tavily Search]
+    end
 
-    Chat --> Agent
+    subgraph Knowledge Layer
+        P[📄 PDF Documents]
+        H[🤗 HuggingFace Embeddings]
+        F[(FAISS Vector DB)]
+    end
 
-    Agent[🧠 LangGraph Agent]
+    U --> S
+    S --> A
 
-    Agent --> LLM[⚡ Groq Llama 3.3 70B]
+    A <--> G
 
-    Agent --> Weather[🌦️ Weather Tool]
-    Agent --> Search[🌐 Tavily Search]
-    Agent --> RAG[📄 RAG Pipeline]
+    A --> W
+    A --> T
 
-    RAG --> Loader[PyPDF Loader]
-    Loader --> Splitter[Text Splitter]
-    Splitter --> Embeddings[HuggingFace Embeddings]
-    Embeddings --> FAISS[(FAISS Vector Store)]
+    P --> H
+    H --> F
 
-    FAISS --> Agent
+    A <--> F
 
-    Weather --> Agent
-    Search --> Agent
-    LLM --> Agent
+    A <--> M
 
-    Agent --> Memory[(SQLite Chat Memory)]
-
-    Agent --> Response[🤖 Final Response]
-
-    Response --> UI
+    A --> S
+    S --> U
 ```
 # 🛠️ Tech Stack
 
