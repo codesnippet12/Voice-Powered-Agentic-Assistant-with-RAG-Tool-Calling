@@ -10,9 +10,7 @@
 
 ## 🚀 Live Demo
 
-🌐 **Application:** YOUR_STREAMLIT_URL
-
-🎥 **Demo Video:** YOUR_VIDEO_LINK
+🌐 **Application:** https://voice-powered-agentic-assistant-with-rag-tool-calling-7kxsjvgk.streamlit.app/
 
 ---
 
