@@ -31,14 +31,6 @@ Unlike traditional chatbots, this assistant can reason, retrieve external knowle
 
 ---
 
-# 📸 Screenshots
-
-## Chat Interface
-
-![Chat UI](screenshots/chat-ui.png)
-
----
-
 # ✨ Features
 
 ### 🤖 Agentic AI Workflow
