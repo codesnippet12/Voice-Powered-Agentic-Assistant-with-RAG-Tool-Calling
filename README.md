@@ -1,38 +1,43 @@
 # 🎙️ Voice-Powered Agentic AI Assistant with RAG & Tool Calling
 
-> An advanced AI Assistant built using LangGraph, LangChain, Groq LLMs, Retrieval-Augmented Generation (RAG), Voice Input, and Real-Time Tool Calling.
+> An intelligent AI assistant built using **LangGraph**, **Groq Llama 3.3**, **Retrieval-Augmented Generation (RAG)**, **Voice Input**, and **Real-Time Tool Calling**.
 
-![Python](https://img.shields.io/badge/Python-3.11-blue)
-![Streamlit](https://img.shields.io/badge/Streamlit-Frontend-red)
-![LangGraph](https://img.shields.io/badge/LangGraph-Agentic_AI-green)
-![Groq](https://img.shields.io/badge/Groq-LLM-orange)
-![FAISS](https://img.shields.io/badge/FAISS-Vector_DB-purple)
-![Docker](https://img.shields.io/badge/Docker-Containerized-blue)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-success?style=for-the-badge)](https://voice-powered-agentic-assistant-with-rag-tool-calling-7kxsjvgk.streamlit.app/)
+[![Python](https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge)]()
+[![LangGraph](https://img.shields.io/badge/LangGraph-Agentic_AI-green?style=for-the-badge)]()
+[![Streamlit](https://img.shields.io/badge/Streamlit-Frontend-red?style=for-the-badge)]()
+[![Groq](https://img.shields.io/badge/Groq-LLM-orange?style=for-the-badge)]()
+
+## 🚀 Live Demo
+
+🌐 **Application:** YOUR_STREAMLIT_URL
+
+🎥 **Demo Video:** YOUR_VIDEO_LINK
 
 ---
 
-## 🚀 Project Overview
+# 📖 Project Overview
 
-This project is an **Agentic AI Assistant** capable of:
+This project is a **Voice-Powered Agentic AI Assistant** that can:
 
-- 🎤 Voice-based interactions
-- 🧠 Multi-step reasoning using LangGraph
-- 🔍 Retrieval-Augmented Generation (RAG)
-- 📄 PDF document understanding
-- 🌦️ Real-time Weather Tool Calling
-- 🌐 Web Search using Tavily
-- 💬 Conversational Memory
-- 🗂️ Multi-Chat Session Management
-- 🔊 Voice-to-Text Processing
-- ⚡ Ultra-fast responses using Groq LLMs
+- 🎤 Understand voice commands
+- 💬 Answer natural language questions
+- 📄 Chat with uploaded PDF documents
+- 🔍 Search the web in real time
+- 🌦️ Fetch live weather information
+- 🧠 Maintain conversation history
+- 🤖 Dynamically decide when to use tools
+- ⚡ Deliver ultra-fast responses using Groq LLMs
 
-Unlike traditional chatbots, this system can dynamically decide whether to:
+Unlike traditional chatbots, this assistant can reason, retrieve external knowledge, and invoke tools autonomously.
 
-- Answer from its own knowledge
-- Retrieve information from uploaded documents
-- Use external tools
-- Search the internet
-- Perform reasoning workflows
+---
+
+# 📸 Screenshots
+
+## Chat Interface
+
+![Chat UI](screenshots/chat-ui.png)
 
 ---
 
@@ -40,133 +45,88 @@ Unlike traditional chatbots, this system can dynamically decide whether to:
 
 ### 🤖 Agentic AI Workflow
 
-Built using **LangGraph State Machines** to create intelligent agent behavior.
+Built using **LangGraph**, enabling:
 
-The assistant can:
-
-✔ Understand user intent  
-✔ Decide which tool to use  
-✔ Retrieve external knowledge  
-✔ Generate contextual responses  
-✔ Maintain conversation history
+- Multi-step reasoning
+- Tool selection
+- State management
+- Dynamic routing
 
 ---
 
 ### 📄 Retrieval-Augmented Generation (RAG)
 
-Upload PDFs and ask questions about them.
+Users can upload PDF documents and ask questions.
 
 Implemented using:
 
-- PyPDFLoader
-- Text Chunking
+- PyPDF
+- Text Splitting
 - HuggingFace Embeddings
-- FAISS Vector Database
+- FAISS Vector Store
 
 Benefits:
 
-- Reduces hallucinations
-- Provides document-grounded responses
-- Enables enterprise knowledge retrieval
+- Reduced hallucinations
+- Document-grounded responses
+- Knowledge retrieval from custom PDFs
 
 ---
 
-### 🌐 Tool Calling
+### 🌐 Real-Time Web Search
 
-The assistant can dynamically invoke external tools:
+Powered by **Tavily Search**.
 
-#### Weather Tool
-
-Provides:
-
-- Current Temperature
-- Humidity
-- Wind Speed
-- Weather Conditions
-
-#### Web Search Tool
-
-Powered by Tavily Search.
-
-Used when:
+The assistant automatically searches the web when:
 
 - Information is recent
-- Knowledge is not available locally
-- User requests latest updates
+- User requests current events
+- Knowledge isn't available locally
+
+---
+
+### 🌦️ Live Weather Tool
+
+Supports:
+
+- Current weather
+- Temperature
+- Humidity
+- Wind speed
+- Weather conditions
 
 ---
 
 ### 🎤 Voice Assistant
 
-Users can interact through voice.
-
-Pipeline:
-
-Voice Input
-↓
-Speech Recognition
-↓
-Text Query
-↓
-LangGraph Agent
-↓
-Response
-
----
-
-### 💾 Persistent Chat History
-
-Supports:
-
-- Multiple conversations
-- Session switching
-- Conversation storage
-- Context-aware responses
-
----
-
-<<<<<<< HEAD
-## 🏗️ System Architecture
+Voice Workflow:
 
 ```text
-                    ┌─────────────────┐
-                    │     User        │
-                    └────────┬────────┘
-                             │
-                             ▼
-                 ┌────────────────────┐
-                 │ Streamlit Frontend │
-                 └────────┬───────────┘
-                          │
-                          ▼
-                ┌─────────────────────┐
-                │   LangGraph Agent   │
-                └────────┬────────────┘
-                         │
-        ┌────────────────┼────────────────┐
-        │                │                │
-        ▼                ▼                ▼
-
- ┌────────────┐   ┌─────────────┐   ┌─────────────┐
- │ Weather API│   │ Tavily Tool │   │ RAG Engine  │
- └────────────┘   └─────────────┘   └──────┬──────┘
-                                           │
-                                           ▼
-                               ┌─────────────────────┐
-                               │ FAISS Vector Store │
-                               └─────────┬──────────┘
-                                         │
-                                         ▼
-                           ┌─────────────────────────┐
-                           │ HuggingFace Embeddings  │
-                           └─────────────────────────┘
-
+Voice Input
+      ↓
+Speech Recognition
+      ↓
+LangGraph Agent
+      ↓
+LLM + Tools + RAG
+      ↓
+Response
 ```
 
 ---
 
-=======
-## 🏗️ High-Level Architecture
+### 💾 Persistent Chat Memory
+
+Supports:
+
+- Multiple conversations
+- Chat history
+- Context-aware responses
+- SQLite-based persistence
+
+---
+
+# 🏗️ System Architecture
 
 ```mermaid
 flowchart LR
@@ -186,14 +146,14 @@ flowchart LR
     end
 
     subgraph Tool Layer
-        W[🌦️ OpenWeather API]
+        W[🌦️ Weather API]
         T[🌐 Tavily Search]
     end
 
     subgraph Knowledge Layer
         P[📄 PDF Documents]
         H[🤗 HuggingFace Embeddings]
-        F[(FAISS Vector DB)]
+        F[(FAISS Vector Store)]
     end
 
     U --> S
@@ -214,7 +174,9 @@ flowchart LR
     A --> S
     S --> U
 ```
->>>>>>> b4be28786bbd97da0e710d66b6ca61bc7b2c3aa7
+
+---
+
 # 🛠️ Tech Stack
 
 ## Frontend
@@ -229,53 +191,34 @@ flowchart LR
 ## LLM
 
 - Groq
-- Llama Models
+- Llama 3.3 70B
 
 ## RAG
 
 - FAISS
 - HuggingFace Embeddings
-- PyPDFLoader
+- PyPDF
+
+## Voice Processing
+
+- Whisper
+- Streamlit Mic Recorder
+- gTTS
 
 ## Tools
 
 - Tavily Search API
 - OpenWeather API
 
-## Deployment
+## Storage
+
+- SQLite
+
+## DevOps
 
 - Docker
+- GitHub Actions
 - AWS EC2
-- GitHub Actions CI/CD
-
----
-
-# ⚙️ Workflow
-
-### User Query
-
-```text
-User → LangGraph Agent
-```
-
-### Decision Making
-
-```text
-Need Tool?
-    ├── Weather Tool
-    ├── Web Search
-    └── RAG Retrieval
-```
-
-### Response Generation
-
-```text
-Tool Output
-      +
-LLM Reasoning
-      ↓
-Final Answer
-```
 
 ---
 
@@ -287,17 +230,19 @@ Final Answer
 ├── agentic_chatbot_rag_backend.py
 ├── requirements.txt
 ├── Dockerfile
+├── runtime.txt
+├── packages.txt
+├── screenshots/
+├── chatbot.db
 ├── .github/
 │   └── workflows/
 │       └── cicd.yml
-├── uploads/
-├── data/
 └── README.md
 ```
 
 ---
 
-# 🔑 Environment Variables
+# ⚙️ Environment Variables
 
 Create a `.env` file:
 
@@ -325,16 +270,18 @@ cd Voice-Powered-Agentic-Assistant-with-RAG-Tool-Calling
 python -m venv .venv
 ```
 
-### Activate
-
-```bash
-source .venv/bin/activate
-```
+### Activate Environment
 
 Windows:
 
 ```bash
 .venv\Scripts\activate
+```
+
+Linux/Mac:
+
+```bash
+source .venv/bin/activate
 ```
 
 ### Install Dependencies
@@ -374,260 +321,131 @@ Implemented using GitHub Actions.
 Workflow:
 
 ```text
-Push to GitHub
+Developer Push
        ↓
-Build Docker Image
+GitHub Actions
        ↓
-Push to Docker Hub
+Docker Build
        ↓
-Deploy to AWS EC2
+Docker Hub
+       ↓
+AWS EC2 Deployment
        ↓
 Health Check
 ```
 
 ---
 
-<<<<<<< HEAD
-=======
 # 🧠 Challenges & Key Learnings
 
-Building this project involved solving several real-world engineering challenges beyond simply integrating an LLM.
+### Agentic Workflow Design
 
----
+Implemented stateful AI workflows using LangGraph to enable dynamic decision-making and tool routing.
 
-## 1️⃣ Designing an Agentic Workflow with LangGraph
+### Building RAG Pipelines
 
-### Challenge
+Learned how to:
 
-Traditional chatbot implementations follow a simple:
+- Chunk documents
+- Generate embeddings
+- Perform semantic search
+- Ground responses in external knowledge
 
-```text
-User → LLM → Response
-```
-
-However, an intelligent assistant must dynamically decide:
-
-- When to answer directly
-- When to search the web
-- When to query uploaded documents
-- When to invoke external tools
-
-### Learning
-
-Implemented a graph-based workflow using LangGraph where the assistant:
-
-- Maintains state across interactions
-- Routes requests to appropriate tools
-- Supports multi-step reasoning
-- Creates a more production-ready agent architecture
-
----
-
-## 2️⃣ Building Retrieval-Augmented Generation (RAG)
-
-### Challenge
-
-Large Language Models may hallucinate when answering domain-specific questions.
-
-### Learning
-
-Built a RAG pipeline using:
-
-- PyPDFLoader
-- Recursive Text Splitting
-- HuggingFace Embeddings
-- FAISS Vector Database
-
-This improved answer quality by grounding responses in user-provided documents.
-
----
-
-## 3️⃣ Tool Calling & Function Routing
-
-### Challenge
-
-The assistant needed access to real-time information unavailable in the model's training data.
-
-### Learning
-
-Integrated external tools including:
-
-- Weather API
-- Tavily Web Search
-
-The assistant autonomously decides when tool usage is required and incorporates tool outputs into the final response.
-
----
-
-## 4️⃣ Managing Conversation State
-
-### Challenge
-
-Maintaining context across multiple conversations while supporting chat switching.
-
-### Learning
-
-Implemented persistent conversation storage using:
-
-- LangGraph Checkpointing
-- SQLite Memory Storage
-
-This enabled:
-
-- Multi-session chat history
-- Context-aware conversations
-- Thread-based conversation management
-
----
-
-## 5️⃣ Voice-Based Interaction
-
-### Challenge
-
-Creating a natural voice-first experience within a web application.
-
-### Learning
+### Tool Integration
 
 Integrated:
 
-- Speech-to-Text processing
-- Microphone input support
-- Real-time transcription workflow
+- Weather APIs
+- Web Search APIs
 
-This transformed the assistant from a text chatbot into an interactive voice-enabled AI system.
+allowing the assistant to access real-time information.
 
----
+### Voice AI Development
 
-## 6️⃣ Dockerization & Cloud Deployment
+Implemented:
 
-### Challenge
+- Speech-to-Text
+- Voice Recording
+- Audio Processing
 
-Deploying AI applications is significantly different from running them locally.
+to provide a natural user experience.
 
-Issues encountered included:
-
-- Missing dependencies
-- Docker build failures
-- Environment variable management
-- Memory limitations
-- Cloud networking and security rules
-
-### Learning
+### Cloud Deployment
 
 Gained practical experience with:
 
-- Docker Containers
-- AWS EC2 Deployment
-- GitHub Actions CI/CD
-- Cloud Networking
-- Linux-based deployments
-
----
-
-## 7️⃣ Debugging Real-World AI Systems
-
-### Challenge
-
-AI applications often fail due to dependency conflicts, API integrations, memory constraints, and deployment environment differences.
-
-### Learning
-
-Developed experience in:
-
-- Reading production logs
-- Troubleshooting containerized applications
-- Dependency management
-- Performance optimization
-- End-to-end system debugging
-
----
-
-# 📚 Overall Takeaways
-
-This project provided hands-on experience across multiple domains:
-
-### Artificial Intelligence
-
-- Agentic AI Systems
-- RAG Architectures
-- Tool Calling
-- Prompt Engineering
-
-### Backend Engineering
-
-- API Integration
-- State Management
-- Data Persistence
-
-### Cloud & DevOps
-
 - Docker
-- AWS
+- AWS EC2
 - CI/CD Pipelines
-- Deployment Automation
+- Environment Management
 
-### Software Engineering
+### Production Debugging
 
-- System Design
-- Debugging
-- Scalability Considerations
-- Production Readiness
+Resolved real-world issues involving:
 
-The project evolved from a simple chatbot into a full-fledged AI assistant capable of reasoning, retrieval, tool usage, and voice interaction, closely resembling modern production AI systems.
+- Dependency conflicts
+- Package management
+- Cloud deployments
+- API integrations
+- Runtime errors
 
->>>>>>> b4be28786bbd97da0e710d66b6ca61bc7b2c3aa7
-# 📈 Future Improvements
+---
+
+# 📚 Key Takeaways
+
+This project provided hands-on experience with:
+
+✅ Agentic AI Systems
+
+✅ LangGraph State Management
+
+✅ Retrieval-Augmented Generation (RAG)
+
+✅ Vector Databases (FAISS)
+
+✅ Tool Calling & Function Routing
+
+✅ Voice AI Applications
+
+✅ Cloud Deployment
+
+✅ Docker & CI/CD
+
+✅ Production Debugging
+
+---
+
+# 🚀 Future Enhancements
 
 - Multi-Agent Collaboration
 - Long-Term Memory
 - Image Understanding
 - Voice Response Generation
-- Authentication & User Profiles
+- User Authentication
 - Knowledge Graph Integration
-- Agent Monitoring Dashboard
+- Analytics Dashboard
 
 ---
 
-# 🎯 Key Highlights for Recruiters
-
-✅ Agentic AI Architecture
-
-✅ LangGraph State Management
-
-✅ Tool Calling & Function Routing
-
-✅ Retrieval-Augmented Generation (RAG)
-
-✅ Vector Search with FAISS
-
-✅ Voice-Based User Interface
-
-✅ Dockerized Deployment
-
-✅ CI/CD with GitHub Actions
-
-✅ AWS Cloud Deployment
-
-✅ Production-Oriented Design
-
----
-
-## 👨‍💻 Author
+# 👨‍💻 Author
 
 **Subhranil Das**
 
 Electronics & Communication Engineering (2025)
 
-Passionate about:
+Interested in:
 
 - Backend Development
 - AI Agents
 - RAG Systems
 - Distributed Systems
-- Cloud & DevOps
+- Cloud Technologies
 
-<<<<<<< HEAD
-⭐ If you found this project useful, consider giving it a star.
-=======
-⭐ If you found this project useful, consider giving it a star.
->>>>>>> b4be28786bbd97da0e710d66b6ca61bc7b2c3aa7
+### Connect With Me
+
+- LinkedIn: YOUR_LINKEDIN
+- GitHub: https://github.com/codesnippet12
+
+---
+
+⭐ If you found this project interesting, consider giving it a star.
