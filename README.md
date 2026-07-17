@@ -433,7 +433,7 @@ Interested in:
 
 ### Connect With Me
 
-- LinkedIn: YOUR_LINKEDIN
+- LinkedIn: https://www.linkedin.com/in/subhranil-das-software-engineer/
 - GitHub: https://github.com/codesnippet12
 
 ---
