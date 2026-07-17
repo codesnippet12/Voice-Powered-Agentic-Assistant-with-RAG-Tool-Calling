@@ -127,43 +127,46 @@ Supports:
 
 ## 🏗️ System Architecture
 
-```text
-                    ┌─────────────────┐
-                    │     User        │
-                    └────────┬────────┘
-                             │
-                             ▼
-                 ┌────────────────────┐
-                 │ Streamlit Frontend │
-                 └────────┬───────────┘
-                          │
-                          ▼
-                ┌─────────────────────┐
-                │   LangGraph Agent   │
-                └────────┬────────────┘
-                         │
-        ┌────────────────┼────────────────┐
-        │                │                │
-        ▼                ▼                ▼
+```mermaid
+flowchart TD
 
- ┌────────────┐   ┌─────────────┐   ┌─────────────┐
- │ Weather API│   │ Tavily Tool │   │ RAG Engine  │
- └────────────┘   └─────────────┘   └──────┬──────┘
-                                           │
-                                           ▼
-                               ┌─────────────────────┐
-                               │ FAISS Vector Store │
-                               └─────────┬──────────┘
-                                         │
-                                         ▼
-                           ┌─────────────────────────┐
-                           │ HuggingFace Embeddings  │
-                           └─────────────────────────┘
+    User([👤 User])
 
+    User --> UI[🎨 Streamlit Frontend]
+
+    UI --> Voice[🎤 Voice Input]
+    UI --> Chat[💬 Text Query]
+
+    Voice --> STT[Speech-to-Text]
+    STT --> Agent
+
+    Chat --> Agent
+
+    Agent[🧠 LangGraph Agent]
+
+    Agent --> LLM[⚡ Groq Llama 3.3 70B]
+
+    Agent --> Weather[🌦️ Weather Tool]
+    Agent --> Search[🌐 Tavily Search]
+    Agent --> RAG[📄 RAG Pipeline]
+
+    RAG --> Loader[PyPDF Loader]
+    Loader --> Splitter[Text Splitter]
+    Splitter --> Embeddings[HuggingFace Embeddings]
+    Embeddings --> FAISS[(FAISS Vector Store)]
+
+    FAISS --> Agent
+
+    Weather --> Agent
+    Search --> Agent
+    LLM --> Agent
+
+    Agent --> Memory[(SQLite Chat Memory)]
+
+    Agent --> Response[🤖 Final Response]
+
+    Response --> UI
 ```
-
----
-
 # 🛠️ Tech Stack
 
 ## Frontend
